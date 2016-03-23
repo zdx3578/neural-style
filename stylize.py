@@ -2,6 +2,8 @@ import vgg
 
 import tensorflow as tf
 import numpy as np
+import datetime
+import time
 
 from sys import stderr
 
@@ -97,6 +99,7 @@ def stylize(network, initial, content, styles, iterations,
         train_step = tf.train.AdamOptimizer(learning_rate).minimize(loss)
 
         def print_progress(i, last=False):
+            stderr.write( datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S ') )
             stderr.write('Iteration %d/%d\n' % (i + 1, iterations))
             if last or (print_iterations and i % print_iterations == 0):
                 stderr.write('  content loss: %g\n' % content_loss.eval())

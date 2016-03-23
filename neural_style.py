@@ -2,6 +2,9 @@ import os
 
 from stylize import stylize
 
+import datetime
+import time
+
 import numpy as np
 import scipy.misc
 
@@ -134,7 +137,8 @@ def main():
         else:
             output_file = options.output
         if output_file:
-            imsave(output_file, image)
+            tme = datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d.%H.%M.%S.')
+            imsave(tme+output_file, image)
 
 
 def imread(path):

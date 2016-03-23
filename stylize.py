@@ -114,7 +114,7 @@ def stylize(network, initial, content, styles, iterations,
             sess.run(tf.initialize_all_variables())
             for i in range(iterations):
                 last_step = (i == iterations - 1)
-                print_progress(i, last=last_step)
+                if (i % 10 == 0 ): print_progress(i, last=last_step)
                 train_step.run()
 
                 if (checkpoint_iterations and i % checkpoint_iterations == 0) or last_step:

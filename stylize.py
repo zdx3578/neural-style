@@ -110,7 +110,7 @@ def stylize(network, initial, content, styles, iterations,
                 stderr.write('  content loss: %g\n' % content_loss.eval())
                 stderr.write('    style loss: %g\n' % style_loss.eval())
                 stderr.write('       tv loss: %g\n' % tv_loss.eval())
-                stderr.write('    total loss: %g\n' % totlos)
+                stderr.write('    total loss: %g\n' % loss.eval())
                 #os.system('echo  {0} {1} {2} >>  losslog '.format(i,ntime,totlos))
 
         # optimization

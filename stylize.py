@@ -130,7 +130,8 @@ def stylize(network, initial, content, styles, iterations,
                         best = image.eval()
                     yield (
                         (None if last_step else i),
-                        vgg.unprocess(best.reshape(shape[1:]), mean_pixel)
+                        vgg.unprocess(best.reshape(shape[1:]), mean_pixel),
+                        this_loss
                     )
 
 

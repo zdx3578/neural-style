@@ -138,8 +138,8 @@ def main():
         else:
             output_file = options.output
         if output_file:
-            tme = datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d.%H.%M.%S.')
-            imsave(output_file+tme+totlos+'.jpg', image)
+            tme = datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d.%H.%M.%S...')
+            imsave(output_file+tme+str(totlos)+'.jpg', image)
 
 
 def imread(path):

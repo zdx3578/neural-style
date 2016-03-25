@@ -1,5 +1,6 @@
 import vgg
 
+import os
 import tensorflow as tf
 import numpy as np
 import datetime
@@ -101,8 +102,8 @@ def stylize(network, initial, content, styles, iterations,
         train_step = tf.train.AdamOptimizer(learning_rate).minimize(loss)
 
         def print_progress(i, last=False):
-            totlos = loss.eval()
-            ntime = datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S ')
+            #totlos = loss.eval()
+            ntime = datetime.datetime.fromtimestamp(time.time()).strftime(' %Y-%m-%d %H:%M:%S ')
             stderr.write( ntime )
             stderr.write('Iteration %d/%d\n' % (i + 1, iterations))
             if last or (print_iterations and i % print_iterations == 0):
@@ -110,7 +111,7 @@ def stylize(network, initial, content, styles, iterations,
                 stderr.write('    style loss: %g\n' % style_loss.eval())
                 stderr.write('       tv loss: %g\n' % tv_loss.eval())
                 stderr.write('    total loss: %g\n' % totlos)
-                os.system('echo  {0} {1} >>  losslog '.format(ntime,totlos))
+                #os.system('echo  {0} {1} {2} >>  losslog '.format(i,ntime,totlos))
 
         # optimization
         best_loss = float('inf')

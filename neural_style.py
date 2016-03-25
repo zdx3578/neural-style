@@ -116,7 +116,8 @@ def main():
         parser.error("To save intermediate images, the checkpoint output "
                      "parameter must contain `%s` (e.g. `foo%s.jpg`)")
 
-    for iteration, image in stylize(
+    #for iteration, image in stylize(
+    for iteration, image, totlos in stylize(
         network=options.network,
         initial=initial,
         content=content_image,
@@ -138,7 +139,7 @@ def main():
             output_file = options.output
         if output_file:
             tme = datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d.%H.%M.%S.')
-            imsave(output_file+tme+'.jpg', image)
+            imsave(output_file+tme+totlos+'.jpg', image)
 
 
 def imread(path):

@@ -107,9 +107,9 @@ def stylize(network, initial, content, styles, iterations,
             stderr.write( ntime )
             stderr.write('Iteration %d/%d\n' % (i + 1, iterations))
             if last or (print_iterations and i % print_iterations == 0):
-                stderr.write('  content loss: %g\n' % content_loss.eval())
-                stderr.write('    style loss: %g\n' % style_loss.eval())
-                stderr.write('       tv loss: %g\n' % tv_loss.eval())
+                stderr.write('  content loss: %g' % content_loss.eval())
+                stderr.write('    style loss: %g' % style_loss.eval())
+                stderr.write('       tv loss: %g' % tv_loss.eval())
                 stderr.write('    total loss: %g\n' % loss.eval())
                 #os.system('echo  {0} {1} {2} >>  losslog '.format(i,ntime,totlos))
 

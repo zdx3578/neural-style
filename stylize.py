@@ -102,16 +102,19 @@ def stylize(network, initial, content, styles, iterations,
         train_step = tf.train.AdamOptimizer(learning_rate).minimize(loss)
 
         def print_progress(i, last=False):
-            #totlos = loss.eval()
             ntime = datetime.datetime.fromtimestamp(time.time()).strftime(' %Y-%m-%d %H:%M:%S ')
             stderr.write( ntime )
             stderr.write('Iteration %d/%d\n' % (i + 1, iterations))
             if last or (print_iterations and i % print_iterations == 0):
-                stderr.write('  content loss: %g' % content_loss.eval())
-                stderr.write('    style loss: %g' % style_loss.eval())
-                stderr.write('       tv loss: %g' % tv_loss.eval())
-                stderr.write('    total loss: %g\n' % loss.eval())
-                #os.system('echo  {0} {1} {2} >>  losslog '.format(i,ntime,totlos))
+                totlos = loss.eval()
+                closs = content_loss.eval()
+                sloss = style_loss.eval()
+                tloss = tv_loss.eval()
+                stderr.write('  content loss: %g' % closs)
+                stderr.write('    style loss: %g' % sloss)
+                stderr.write('       tv loss: %g' % tloss
+                stderr.write('    total loss: %g\n' % totlos)
+                os.system('echo  {0} {1} {2} {3} {4} {5} >>  losslog '.format(i,ntime,totlos,closs,sloss,tloss))
 
         # optimization
         best_loss = float('inf')
